@@ -1,0 +1,464 @@
+body{
+    background-image: url("Photo/fon-dlya-saita-42.png");
+    background-size: cover;
+    margin: 0;
+}
+.container {
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+}
+@media (max-width: 992px) {
+    .container{
+        max-width: 750px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .container{
+        max-width: 450px;
+    }
+    .slides, .slides img  {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 470px) {
+    .container{
+        max-width: 400px;
+    }
+    .slides, .slides img  {
+        max-height: 300px;
+    }
+    .footer-content iframe {
+        width: 300px;
+        height: 150px;
+    }
+}
+
+
+.topOne {
+    height: 50px;
+    font-size: 22px;
+    text-align: center;
+    font-family: cursive;
+}
+
+.oneBlue {
+    height: 25px;
+    background-color: #015BBBFF;
+
+}
+.oneYellow {
+    height: 25px;
+    background-color: #FED501FF;
+}
+
+
+
+
+/* burger menu */
+.open{
+    display: flex !important;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #11476d40;
+    max-height: 75px;
+    padding: 0 10px;
+}
+
+
+.logo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid #FAF6F2;
+    width: 115px;
+    height: 70px;
+    font-size: 24px;
+    background-color: yellow;
+    opacity: 0.7;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.logo a {
+    text-decoration: none;
+}
+.nav{
+    display: flex;
+    width: 700px;
+}
+
+.nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: end;
+}
+
+.burger{
+    display: none; /*початково ховаємо іконку бургера*/
+    position: relative;
+    z-index: 50;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30px;
+    height: 18px;
+}
+
+.burger span{
+    height: 5px;
+    width: 80%;
+    transform: scale(1);
+    background-color: yellow;
+    
+}
+
+.burger::before, .burger::after{
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    background-color: yellow;
+    transition: all 0.3s ease 0s;
+}
+
+.burger::before { top: 0 }
+
+.burger::after { bottom: 0 }
+
+
+/* Добавляем класс active для анимации иконки бургера */
+.burger.active span { transform: scale(0) }
+
+.burger.active::before{
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    transition: transform 0.5s linear;
+}
+
+.burger.active::after{
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+    transition: transform 0.5s linear;
+}
+
+
+
+
+/* При разрешении экрана 900px и ниже, выводим на экран иконку бургера */
+@media (max-width: 900px) {
+
+    .burger { 
+        display: flex;
+        height: 30px;
+        width: 40px;
+    }
+
+    .nav {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0; bottom: 0; left: 0; right: 0;
+        z-index: 50;
+        padding: 50px 40px;
+        background-color: black;
+        animation: burgerAnimation 0.4s;
+    }
+
+    .nav ul{
+        flex-direction: column;
+        row-gap: 30px;
+    }
+}
+
+@keyframes burgerAnimation {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/* ///////////////////////////////////////*/
+
+
+
+.nav a {
+    color: cyan;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.nav a:hover {
+    background-color: yellow;
+    color: black;
+    font-weight: bolder;
+}
+
+.nav a.active {
+    background-color: yellow;
+    color: blue;
+    font-weight: bolder;
+}
+
+
+
+/*burger menu END*/
+
+/* Модальне вікно */
+
+.mymodalClick {
+    opacity: 0.4;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.modalClickPictures {
+    width: 50px;
+    height: 50px;
+}
+
+.mymodalClick:hover {
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
+
+
+#mymodal {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    transition: all 1.5s ease-in-out;
+}
+
+.mymodal_body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mymodal_content {
+    border-radius: 20%;
+    background: rgb(68, 0, 255, 0.3);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px; /* Максимальна ширина модального вікна */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7);
+    text-align: center;
+    position: relative;
+    top: 50%;
+}
+
+.mymodal_close { 
+    font-size: 20px;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid;
+    border-radius: 30%;
+    background-color: red;
+
+}
+
+.modal-open {
+    overflow: hidden;
+}
+.bl {
+    color:red;
+    display: block;
+}
+/*************************************************************************************/
+
+/* slideshow */
+
+.slides {
+    z-index: 0;
+    position: relative; /* Робимо батьківський контейнер relative для дочірніх елементів absolute */
+    width: 100%; /* Ширина батьківського контейнера */
+    height: 600px; /* Висота батьківського контейнера */
+}
+
+.slide {
+    position: absolute; /* Робимо всі картинки absolute для перекриття */
+    top: 0; /* Розташовуємо всі картинки в одній позиції по верхньому краю */
+    left: 0; /* Розташовуємо всі картинки в одній позиції по лівому краю */
+    width: 100%; /* Розмір картинки по ширині батьківського контейнера */
+    height: 600px; /* Розмір картинки по висоті батьківського контейнера */
+}
+
+ .slide {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.visible {
+    opacity: 1;
+    /*transition: opacity 1s ease-in-out;*/
+}
+
+
+/* finish slideshow*/
+
+
+.ct-one {
+    display: flex;
+}
+
+.ct-one ::first-letter {
+    font-size: 30px;
+    font-weight: bold;
+} 
+
+
+.column {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    .ct-one {
+        display: block;
+    }
+}
+
+ .icon img {
+    height: 70px;
+    width: 70px;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+.column p {
+    font: Tahoma, Verdana, sans-serif;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.ct-one {
+    color:rgb(217, 241, 77)
+}
+
+.col {
+    float: left;
+    margin: 29px;
+}
+.col p {
+    margin: 10px;
+    color: rgb(210, 247, 0);
+}
+.col h2 p {
+    margin: 0px;
+    padding: 0px;
+    color: rgb(195, 212, 95);
+}
+.col h2 {
+    margin: 0px;
+    padding: 0px;   
+}
+.footer-content {
+    width: 100%;
+    height: 100%;
+}
+
+.footer-content iframe {
+    max-width: 200px;
+    max-height: 300px;
+    opacity:0.5;
+    border-radius: 20px;
+}
+
+.footer-content iframe:hover{
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
+
+@media (max-width: 767px) {
+    .ct-one {
+        display: block;
+    }
+    .footer-content {
+        display: block;
+    }
+}
+
+
+.fullscreen-button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#numb {
+    font-size: 50px;
+    color: yellow;
+}
+
+
+
+#viberCallbackForm {
+    color: #007bff; 
+    font-size: 20px;
+}
+
+
+
+#viberCallbackForm input {
+    background-color: gold;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 30px;
+}
+
+#viberCallbackForm button{
+    background-color: gold;
+    font-weight: bold;
+    border-radius: 20px;
+    align-content: center;
+}
+
+.sin {
+    opacity: 0.5; 
+    transition: opacity 1.0s; 
+}
+
+.sin:hover {
+    opacity: 1;
+}

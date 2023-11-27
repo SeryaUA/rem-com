@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+  <form action="#" method="post" id='form' class='form_body'>
+    <h3 class="form_title">Пишіть, на всі питання відповіді знайду:)</h3>
+    <div class="form_item">
+      <label for="formName" class="form_label">Ім'я користувача*:</label>
+      <input type="text" id="formName" name="name" class="form_input _req">
+    </div>
+  
+    <div class="form_item">
+      <label for="formEmail" class="form_label">Ваша пошта*:</label>
+      <input type="text" id="formEmail" name="email" class="form_input _req _email">
+    </div>
+  
+    <div class="form_item">
+      <label for="formMessage" class="form_label">Ваше повідомлення:</label>
+      <textarea name="message" id="formMessage" class="form_input _req"></textarea>
+    </div>
+    
+    <button type="submit" class="form_button">Відправити</button>
+  </form>
+
+  <script src="form.js"></script>
+</body>
+</html>
